@@ -27,3 +27,5 @@ Route::put('/editproduct/{id}',[BackendController::class,'editProduct']);
 Route::delete('/delete/{id}',[BackendController::class,'deleteProduct']);
 Route::get('/carts',[CartController::class,"getProductCart"]);
 Route::post('/cart/{id}',[CartController::class,"addToCart"]);
+Route::post('/authen/admin',[BackendController::class,"checkAdminLogin"]);
+Route::get('/logoutadmin',[BackendController::class,"logAdminOut"]);

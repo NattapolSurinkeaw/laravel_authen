@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class BackendController extends Controller
 {
@@ -121,4 +122,38 @@ class BackendController extends Controller
         ], 200);
     }
 
+    public function checkAdminLogin(Request $request)
+    {
+        $input = $request->all();
+
+        $this->validate($request,[
+            'email' => 'required',
+            'password' => 'required|min:6',
+        ]);
+         
+
+        if (Auth::guard('admin')->attempt(['email' => $input['email'], 'password' => $input['password']])) {
+            return response()->json([
+                "status" => "200",
+                "message" => "Admin login successful"
+            ],200);
+        }else {
+            return response()->json([
+                "status" => "401",
+                "message" => "Unauthorized"
+            ],401);
+        }
+    }
+
+    public function logAdminOut()
+    {
+        Auth::guard('admin')->logout();
+        return response()->json([
+            "status" => "200",
+            "message" => "Admin logout successful"
+        ],200);
+    }
+
 }
+
+
