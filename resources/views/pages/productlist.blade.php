@@ -77,15 +77,16 @@
             .catch(function (error) {
                 console.error(error);
             });
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Product has deleted',
+              showConfirmButton: false,
+              timer: 1500
+            }).then(() => {
+          window.location.href = "/products";
+        })
       }
-      setInterval(function() {
-      window.location.href = "/products";
-    }, 1000);
 })
       
     }

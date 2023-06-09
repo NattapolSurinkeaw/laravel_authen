@@ -49,14 +49,13 @@
             title: 'response.data',
             showConfirmButton: false,
             timer: 2000
+          }).then(() => {
+            window.location.href = "/products";
           })
           console.log(response.data);
         }).catch(function (error) {
           console.log(error);
         });
-        setInterval(function() {
-      window.location.href = "/products";
-    }, 1000);
     }
   }
 </script>

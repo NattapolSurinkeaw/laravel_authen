@@ -29,3 +29,5 @@ Route::get('/carts',[CartController::class,"getProductCart"]);
 Route::post('/cart/{id}',[CartController::class,"addToCart"]);
 Route::post('/authen/admin',[BackendController::class,"checkAdminLogin"]);
 Route::get('/logoutadmin',[BackendController::class,"logAdminOut"]);
+Route::post('/authen/user',[BackendController::class,"checkUserLogin"]);
+Route::get('/logoutuser',[BackendController::class,"logUserOut"]);

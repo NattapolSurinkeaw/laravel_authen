@@ -122,25 +122,36 @@ class BackendController extends Controller
         ], 200);
     }
 
+
     public function checkAdminLogin(Request $request)
     {
         $input = $request->all();
 
-        $this->validate($request,[
+        
+        $validator = Validator::make($input, [
             'email' => 'required',
             'password' => 'required|min:6',
         ]);
-         
 
+        if ($validator->fails()) {
+            return response()->json([
+                "status" => "400",
+                "message" => "Validation failed",
+                "errors" => $validator->errors()->all()
+            ], 400);
+        }
+    
         if (Auth::guard('admin')->attempt(['email' => $input['email'], 'password' => $input['password']])) {
             return response()->json([
                 "status" => "200",
-                "message" => "Admin login successful"
+                "message" => "Admin login successful",
+                "data" => Auth::guard('admin')->user()
             ],200);
         }else {
             return response()->json([
                 "status" => "401",
-                "message" => "Unauthorized"
+                "message" => "Unauthorized",
+                "data" => Auth::guard('admin')->user()
             ],401);
         }
     }
@@ -150,7 +161,52 @@ class BackendController extends Controller
         Auth::guard('admin')->logout();
         return response()->json([
             "status" => "200",
-            "message" => "Admin logout successful"
+            "message" => "Admin logout successful",
+            "data" => Auth::guard('admin')->user()
+        ],200);
+    }
+
+
+    public function checkUserLogin(Request $request)
+    {
+        $input = $request->all();
+
+        
+        $validator = Validator::make($input, [
+            'email' => 'required',
+            'password' => 'required|min:6',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                "status" => "400",
+                "message" => "Validation failed",
+                "errors" => $validator->errors()->all()
+            ], 400);
+        }
+    
+        if (Auth::guard('users')->attempt(['email' => $input['email'], 'password' => $input['password']])) {
+            return response()->json([
+                "status" => "200",
+                "message" => "User login successful",
+                "data" => Auth::guard('users')->user()
+            ],200);
+        }else {
+            return response()->json([
+                "status" => "401",
+                "message" => "Unauthorized",
+                "data" => Auth::guard('users')->user()
+            ],401);
+        }
+    }
+
+    public function logUserOut()
+    {
+        Auth::guard('users')->logout();
+        return response()->json([
+            "status" => "200",
+            "message" => "User logout successful",
+            "data" => Auth::guard('users')->user()
         ],200);
     }
 

@@ -14,4 +14,9 @@ class Controller extends BaseController
     {
         return view('pages.homepage');
     }
+
+    public function loginPage()
+    {
+        return view('pages.loginpage');
+    }
 }

@@ -51,13 +51,12 @@
             title: 'response.data',
             showConfirmButton: false,
             timer: 2000
+          }).then(() => {
+            window.location.href = "/products";
           })
         }).catch(function (error) {
           console.log(error);
         });
-        setInterval(function() {
-      window.location.href = "/products";
-    }, 1000);
     }
   }
 </script>

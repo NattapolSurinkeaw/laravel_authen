@@ -2,31 +2,68 @@
 @section('content')
 
 
-<div class="flex gap-4">
+<div class="m-auto">
   
-    @if(auth()->guard('admin')->check())
-    <h1 class="text-3xl">Welcome </h1>
-      <h1 class="text-3xl text-green-600">{{ auth()->guard('admin')->user()->name}}</h1>
-      <a href="/admin/logout">Logout</a>
-    @endif
+    <div class="flex">
+      <h1 class="text-3xl font-bold">Hello Welcome :  </h1>
+      <h1 class="text-3xl font-bold ml-2" id="user_email"></h1>
+    </div>
+    <div class="flex">
+      <h1 class="text-3xl">Hello : </h1>
+      <h1 class="text-3xl ml-2" id="user_name"></h1>
+    </div>
 
-    @if(auth()->guard('users')->check())
-      <h1 class="text-3xl">Welcome </h1>
-      <h1 class="text-3xl text-green-600">{{ auth()->guard('users')->user()->name}}</h1>
-      <a href="/user/logout">Logout</a>
-    @endif
-
-    @if(! auth()->guard('admin')->check() && !auth()->guard('users')->check())
-      <div class="p-10 bg-gray-100 rounded-lg m-auto">
-          <div class="text-3xl text-center m-4">You Are Not Login</div>
-          <div class="flex gap-10">
-            <a class="p-3 text-white font-medium bg-emerald-400 hover:bg-emerald-500 rounded-xl" href="/admin">Login with admin Account</a>
-            <a class="p-3 text-gray-600 font-medium bg-fuchsia-200 hover:bg-fuchsia-400 rounded-xl" href="/user">Login with user Account</a>
-          </div>
-      </div>
-    @endif
+    <button class="m-8 p-3 text-2xl font-bold rounded-xl text-white border bg-red-500 hover:bg-red-600" onclick="logOut()">Logout</button>
 </div>
 
 
+@endsection
 
+@section('scripts')
+  <script>
+      const userData = localStorage.getItem('dataUser');
+      const user = JSON.parse(userData);
+      console.log(user);
+    
+      if (user) {
+        // แสดง email และ name ของ user
+        const emailElement = document.getElementById('user_email');
+        emailElement.textContent = user.data.email;
+
+        const nameElement = document.getElementById('user_name');
+        nameElement.textContent = user.data.name;
+      } else {
+        window.location.href = '/login'
+      }
+
+      function logOut() {
+          Swal.fire({
+          title: 'Logout',
+          text: "Are you sure to log out?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Your Have a Loguts',
+              showConfirmButton: false,
+              timer: 1500
+            }).then(() => {
+              window.location.href = '/login';
+              localStorage.clear(); 
+            })
+          }
+        })
+              
+        }
+        </script>
+
+
+
+  </script>
 @endsection

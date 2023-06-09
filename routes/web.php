@@ -21,6 +21,8 @@ use App\Http\Controllers\ProductController;
 //     return view('welcome');
 // });
 Route::get('/',[Controller::class,'homePage']);
+Route::get('/login',[Controller::class, 'loginPage']);
+
 
 
 Route::get('user',[UserLoginController::class,'showForm']);
@@ -28,8 +30,6 @@ Route::post('/user/login',[UserLoginController::class,'checkLogin']);
 Route::get('/user/logout',[UserLoginController::class,'logOut']);
 
 Route::get('admin',[AdminLoginController::class,'showForm']);
-Route::post('/admin/login',[AdminLoginController::class,'checkLogin'])->name('checklogin');
-Route::get('admin/logout',[AdminLoginController::class,'logOut']);
 
 Route::get('/products', [ProductController::class,"getProducts"]);
 Route::get('/createproduct', [ProductController::class,'createform']);
