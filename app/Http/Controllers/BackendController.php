@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class BackendController extends Controller
 {
@@ -210,6 +211,40 @@ class BackendController extends Controller
         ],200);
     }
 
+    public function register(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'name' => 'required',
+            'password' =>'required|min:6',
+        ]);
+
+        $emailExists = User::where('email', $request->email)->exists();
+        if ($emailExists) {
+            return response()->json([
+                "status" => 400,
+                "message" => "Email already exists"
+            ], 400);
+        } else {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password)
+            ]);
+            return response()->json([
+                'status' => 200,
+                'message' => 'User created successfully',
+                'data' => $user
+            ], 200);
+        }
+    }
+
+
+
+    
+
 }
+
+
 
 

@@ -31,3 +31,4 @@ Route::post('/authen/admin',[BackendController::class,"checkAdminLogin"]);
 Route::get('/logoutadmin',[BackendController::class,"logAdminOut"]);
 Route::post('/authen/user',[BackendController::class,"checkUserLogin"]);
 Route::get('/logoutuser',[BackendController::class,"logUserOut"]);
+Route::post('/register',[BackendController::class,"register"]);

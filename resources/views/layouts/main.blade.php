@@ -10,7 +10,9 @@
 <body>
   @include('layouts.header')
 
-  <main class="m-20">
+  @yield('dashboard')
+
+  <main class="">
     @yield('content')
   </main>
 

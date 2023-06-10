@@ -50,7 +50,7 @@
             icon: 'success',
             title: 'response.data',
             showConfirmButton: false,
-            timer: 2000
+            timer: 1500
           }).then(() => {
             window.location.href = "/products";
           })

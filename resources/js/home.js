@@ -48,20 +48,20 @@ function adminForm() {
           icon: 'success',
           title: 'Login Success',
           showConfirmButton: false,
-          timer: 2000
+          timer: 1000
+        }).then(() => {
+          window.location.href = "/";
         })
-      } else {
-        Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'Login Failed',
-          showConfirmButton: false,
-          timer: 2000
-        })
-      }
-      setInterval(function() {
-        window.location.href = "/";
-      }, 1000);
+      } 
+    })
+    .catch((error) => {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Login Failed',
+        showConfirmButton: false,
+        timer: 2000
+      })
     })
   }})
 }
@@ -99,27 +99,28 @@ function userForm() {
           icon: 'success',
           title: 'Login Success',
           showConfirmButton: false,
-          timer: 2000
+          timer: 1000
+        }).then(() => {
+          window.location.href = "/";
         })
-      } else {
-        Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'Login Failed',
-          showConfirmButton: false,
-          timer: 2000
-        })
-      }
-      setInterval(function() {
-        window.location.href = "/";
-      }, 1000);
+      } 
+    })
+    .catch((error) => {
+      console.log(error);
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Login Failed',
+        showConfirmButton: false,
+        timer: 1000
+      })
     })
   }})
 }
 
 function regisForm(){
   Swal.fire({
-    title: "Admin Login",
+    title: "User registration",
     html: `
           <input type="email" id="email" class="swal2-input" placeholder="Email">
           <input type="text" id="name" class="swal2-input" placeholder="name">
@@ -141,7 +142,27 @@ function regisForm(){
     },
   }).then((result) => {
     if(result.isConfirmed){
-      axios.post(`api/authen/regis`,result.value)
+      axios.post(`api/register`,result.value)
+      .then((response) => {
+        console.log(response.data.message);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Register Success',
+          showConfirmButton: false,
+          timer: 1000
+        })
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: error,
+          showConfirmButton: false,
+          timer: 2000
+        })
+      })
     }
   })
 

@@ -33,4 +33,7 @@ class AdminLoginController extends Controller
         Auth::guard('admin')->logout();
         return view('pages.adminlogin');
     }
+
+
+    
 }

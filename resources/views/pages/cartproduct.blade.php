@@ -37,7 +37,7 @@
                     {{$cart->description}}
                   </td>
                   <td class="px-6 py-4">
-                    {{$cart->price}}
+                    {{$cart->price * $cart->quantity}}
                   </td>
                   <td class="px-6 py-4">
                     {{$cart->quantity}}

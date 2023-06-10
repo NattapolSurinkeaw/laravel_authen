@@ -46,9 +46,9 @@
           Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'response.data',
+            title: 'Update Product successfully',
             showConfirmButton: false,
-            timer: 2000
+            timer: 1000
           }).then(() => {
             window.location.href = "/products";
           })

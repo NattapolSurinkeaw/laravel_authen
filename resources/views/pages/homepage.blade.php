@@ -44,7 +44,7 @@
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, delete it!'
+          confirmButtonText: 'Yes, Logout!'
         }).then((result) => {
           if (result.isConfirmed) {
             Swal.fire({
@@ -52,7 +52,7 @@
               icon: 'success',
               title: 'Your Have a Loguts',
               showConfirmButton: false,
-              timer: 1500
+              timer: 1000
             }).then(() => {
               window.location.href = '/login';
               localStorage.clear(); 

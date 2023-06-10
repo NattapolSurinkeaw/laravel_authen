@@ -22,6 +22,7 @@ use App\Http\Controllers\ProductController;
 // });
 Route::get('/',[Controller::class,'homePage']);
 Route::get('/login',[Controller::class, 'loginPage']);
+Route::get('/admindashboard',[Controller::class, 'admindashboard']);
 
 
 

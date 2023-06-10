@@ -10,13 +10,15 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function homePage()
-    {
+    public function homePage() {
         return view('pages.homepage');
     }
 
-    public function loginPage()
-    {
+    public function loginPage() {
         return view('pages.loginpage');
+    }
+
+    public function adminDashBoard() {
+        return view('pages.admindashboard');
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-<div class="m-10"><a href="/createproduct" class="m- rounded-lg p-4 bg-blue-400">Create</a></div>
+{{-- <div class="m-10"><a href="/createproduct" class="m- rounded-lg p-4 bg-blue-400">Create</a></div> --}}
   <div class="relative overflow-x-auto">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -40,8 +40,8 @@
                   </td>
                   <td class="px-6 py-4">
                     <button class="mr-4 bg-orange-400 rounded-xl text-white p-4" onClick="addProductCart({{$product->id}})">Add Cart</button>
-                    <a class="mr-4 bg-orange-400 rounded-xl text-white p-4" href="/editproduct/{{$product->id}}">Edit</a>
-                    <button class="bg-red-600 rounded-xl text-white p-4 " onClick="deleteProduct({{$product->id}})">Delete</button>
+                    {{-- <a class="mr-4 bg-orange-400 rounded-xl text-white p-4" href="/editproduct/{{$product->id}}">Edit</a>
+                    <button class="bg-red-600 rounded-xl text-white p-4 " onClick="deleteProduct({{$product->id}})">Delete</button> --}}
                   </td>
               </tr>
             @endforeach
