@@ -50,7 +50,7 @@ function adminForm() {
           showConfirmButton: false,
           timer: 1000
         }).then(() => {
-          window.location.href = "/";
+          window.location.href = "/admindashboard";
         })
       } 
     })

@@ -30,8 +30,6 @@ Route::get('user',[UserLoginController::class,'showForm']);
 Route::post('/user/login',[UserLoginController::class,'checkLogin']);
 Route::get('/user/logout',[UserLoginController::class,'logOut']);
 
-Route::get('admin',[AdminLoginController::class,'showForm']);
-
 Route::get('/products', [ProductController::class,"getProducts"]);
 Route::get('/createproduct', [ProductController::class,'createform']);
 

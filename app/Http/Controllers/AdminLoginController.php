@@ -7,10 +7,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminLoginController extends Controller
 {
-    public function showForm()
-    {
-        return view('pages.adminlogin');
-    }
 
     public function checkLogin(Request $request)
     {

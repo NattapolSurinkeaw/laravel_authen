@@ -22,14 +22,17 @@
                 <a href="">
                   <p class="w-full text-white text-center ">cart</p></a>
               </li>
+              <li class="w-full hover:bg-red-400 transition ease-in-out duration-150 py-2 rounded-md">
+                  <p class="w-full text-white text-center ">Logout</p>
+              </li>
             </ul>
         </div>
-        <div class="w-full">
+        <div class="w-full overflow-auto">
             <div class="bg-blue-500 h-[50px] flex justify-between items-center px-4">
                 <p>hamburger</p>
                 <p>icon</p>
             </div>
-            <div class="p-4 w-full overflow-auto grid grid-cols-12 gap-4">
+            <div class="p-4 w-full  grid grid-cols-12 gap-4">
               <div class="col-span-3 p-4 bg-blue-500 w-full">
                 <p class="w-full">test222asdasda</p>
                 <p class="w-full">test222asdasda</p>
@@ -39,8 +42,8 @@
                 <p class="w-full">test222asdasda</p>
               </div>
               <div class="col-span-9 p-4 bg-red-500">
-                <div>
-                  <p>sdsdfs</p>
+                <div >
+                  <p>Hello</p>
                 </div>
               </div>
             </div>
